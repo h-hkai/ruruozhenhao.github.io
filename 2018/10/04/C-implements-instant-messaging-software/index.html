@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="c++,nodejs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++ implements instant messaging software">
+<meta property="og:url" content="http://yoursite.com/2018/10/04/C-implements-instant-messaging-software/index.html">
+<meta property="og:site_name" content="learncat">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/1521537842624.png">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-34-41.png">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-34-51.png">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-35-12.png">
+<meta property="og:updated_time" content="2018-10-04T15:23:42.707Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="C++ implements instant messaging software">
+<meta name="twitter:image" content="http://p4wiqzx0i.bkt.clouddn.com/1521537842624.png">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/04/C-implements-instant-messaging-software/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>C++ implements instant messaging software | learncat</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">learncat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+    <a href="/schedule/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />Schedule</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/04/C-implements-instant-messaging-software/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p4wiqzx0i.bkt.clouddn.com/image4.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="learncat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">C++ implements instant messaging software
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-04 21:52:00 / Modified: 23:23:42" itemprop="dateCreated datePublished" datetime="2018-10-04T21:52:00+08:00">2018-10-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/c/" itemprop="url" rel="index"><span itemprop="name">c++</span></a></span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/c/nodejs/" itemprop="url" rel="index"><span itemprop="name">nodejs</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p4wiqzx0i.bkt.clouddn.com/1521537842624.png" alt=""></p>
+<a id="more"></a>
+<p>主要代码：</p>
+<p>common.h:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span>  CHATROOM_COMMON_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHATROOM_COMMON_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;list&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/types.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/socket.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;netinet/in.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;arpa/inet.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;sys/epoll.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;fcntl.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;errno.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdlib.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认服务器端IP地址</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_IP <span class="meta-string">"127.0.0.1"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务器端口号</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_PORT 8888</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// int epoll_create(int size)中的size</span></span><br><span class="line"><span class="comment">// 为epoll支持的最大句柄数</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EPOLL_SIZE 5000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 缓冲区大小65535</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> BUF_SIZE 0xFFFF</span></span><br><span class="line">    </span><br><span class="line"><span class="comment">// 新用户登录后的欢迎信息</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_WELCOME <span class="meta-string">"Welcome you join to the chat room! Your chat ID is: Client #%d"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 其他用户收到消息的前缀</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SERVER_MESSAGE <span class="meta-string">"ClientID %d say &gt;&gt; %s"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 退出系统</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> EXIT <span class="meta-string">"EXIT"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 提醒你是聊天室中唯一的客户</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CAUTION <span class="meta-string">"There is only one int the char room!"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 注册新的fd到epollfd中</span></span><br><span class="line"><span class="comment">// 参数enable_et表示是否启用ET模式，如果为True则启用，否则使用LT模式</span></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">addfd</span><span class="params">( <span class="keyword">int</span> epollfd, <span class="keyword">int</span> fd, <span class="keyword">bool</span> enable_et )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">ev</span>;</span></span><br><span class="line">    ev.data.fd = fd;</span><br><span class="line">    ev.events = EPOLLIN;</span><br><span class="line">    <span class="keyword">if</span>( enable_et )</span><br><span class="line">        ev.events = EPOLLIN | EPOLLET;</span><br><span class="line">    epoll_ctl(epollfd, EPOLL_CTL_ADD, fd, &amp;ev);</span><br><span class="line">    <span class="comment">// 设置socket为nonblocking模式</span></span><br><span class="line">    <span class="comment">// 执行完就转向下一条指令，不管函数有没有返回。</span></span><br><span class="line">    fcntl(fd, F_SETFL, fcntl(fd, F_GETFD, <span class="number">0</span>)| O_NONBLOCK);</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"fd added to epoll!\n\n"</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">// CHATROOM_COMMON_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>server.cpp:<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Server.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端类成员函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端类构造函数</span></span><br><span class="line">Server::Server()&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化服务器地址和端口</span></span><br><span class="line">    serverAddr.sin_family = PF_INET;</span><br><span class="line">    serverAddr.sin_port = htons(SERVER_PORT);</span><br><span class="line">    serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化socket</span></span><br><span class="line">    listener = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// epool fd</span></span><br><span class="line">    epfd = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 初始化服务端并启动监听</span></span><br><span class="line"><span class="keyword">void</span> Server::Init() &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Init Server..."</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">     <span class="comment">//创建监听socket</span></span><br><span class="line">    listener = socket(PF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(listener &lt; <span class="number">0</span>) &#123; perror(<span class="string">"listener"</span>); <span class="built_in">exit</span>(<span class="number">-1</span>);&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//绑定地址</span></span><br><span class="line">    <span class="keyword">if</span>( bind(listener, (struct sockaddr *)&amp;serverAddr, <span class="keyword">sizeof</span>(serverAddr)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"bind error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//监听</span></span><br><span class="line">    <span class="keyword">int</span> ret = listen(listener, <span class="number">5</span>);</span><br><span class="line">    <span class="keyword">if</span>(ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"listen error"</span>); </span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Start to listen: "</span> &lt;&lt; SERVER_IP &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//在内核中创建事件表</span></span><br><span class="line">    epfd = epoll_create(EPOLL_SIZE);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(epfd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"epfd error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//往事件表里添加监听事件</span></span><br><span class="line">    addfd(epfd, listener, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 关闭服务，清理并关闭文件描述符</span></span><br><span class="line"><span class="keyword">void</span> Server::Close() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//关闭socket</span></span><br><span class="line">    close(listener);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//关闭epoll监听</span></span><br><span class="line">    close(epfd);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 发送广播消息给所有客户端</span></span><br><span class="line"><span class="keyword">int</span> Server::SendBroadcastMessage(<span class="keyword">int</span> clientfd)</span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment">// buf[BUF_SIZE] 接收新消息</span></span><br><span class="line">    <span class="comment">// message[BUF_SIZE] 保存格式化的消息</span></span><br><span class="line">    <span class="keyword">char</span> buf[BUF_SIZE], message[BUF_SIZE];</span><br><span class="line">    bzero(buf, BUF_SIZE);</span><br><span class="line">    bzero(message, BUF_SIZE);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 接收新消息</span></span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"read from client(clientID = "</span> &lt;&lt; clientfd &lt;&lt; <span class="string">")"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">int</span> len = recv(clientfd, buf, BUF_SIZE, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 如果客户端关闭了连接</span></span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">0</span>) </span><br><span class="line">    &#123;</span><br><span class="line">        close(clientfd);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在客户端列表中删除该客户端</span></span><br><span class="line">        clients_list.remove(clientfd);</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"ClientID = "</span> &lt;&lt; clientfd </span><br><span class="line">             &lt;&lt; <span class="string">" closed.\n now there are "</span> </span><br><span class="line">             &lt;&lt; clients_list.size()</span><br><span class="line">             &lt;&lt; <span class="string">" client in the char room"</span></span><br><span class="line">             &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 发送广播消息给所有客户端</span></span><br><span class="line">    <span class="keyword">else</span> </span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 判断是否聊天室还有其他客户端</span></span><br><span class="line">        <span class="keyword">if</span>(clients_list.size() == <span class="number">1</span>) &#123; </span><br><span class="line">            <span class="comment">// 发送提示消息</span></span><br><span class="line">            send(clientfd, CAUTION, <span class="built_in">strlen</span>(CAUTION), <span class="number">0</span>);</span><br><span class="line">            <span class="keyword">return</span> len;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 格式化发送的消息内容</span></span><br><span class="line">        <span class="built_in">sprintf</span>(message, SERVER_MESSAGE, clientfd, buf);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 遍历客户端列表依次发送消息，需要判断不要给来源客户端发</span></span><br><span class="line">        <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt;::iterator it;</span><br><span class="line">        <span class="keyword">for</span>(it = clients_list.begin(); it != clients_list.end(); ++it) &#123;</span><br><span class="line">           <span class="keyword">if</span>(*it != clientfd)&#123;</span><br><span class="line">                <span class="keyword">if</span>( send(*it, message, BUF_SIZE, <span class="number">0</span>) &lt; <span class="number">0</span> ) &#123;</span><br><span class="line">                    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                &#125;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> len;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动服务端</span></span><br><span class="line"><span class="keyword">void</span> Server::Start() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// epoll 事件队列</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">events</span>[<span class="title">EPOLL_SIZE</span>];</span> </span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化服务端</span></span><br><span class="line">    Init();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//主循环</span></span><br><span class="line">    <span class="keyword">while</span>(<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">//epoll_events_count表示就绪事件的数目</span></span><br><span class="line">        <span class="keyword">int</span> epoll_events_count = epoll_wait(epfd, events, EPOLL_SIZE, <span class="number">-1</span>);</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span>(epoll_events_count &lt; <span class="number">0</span>) &#123;</span><br><span class="line">            perror(<span class="string">"epoll failure"</span>);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"epoll_events_count =\n"</span> &lt;&lt; epoll_events_count &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//处理这epoll_events_count个就绪事件</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; epoll_events_count; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> sockfd = events[i].data.fd;</span><br><span class="line">            <span class="comment">//新用户连接</span></span><br><span class="line">            <span class="keyword">if</span>(sockfd == listener)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">client_address</span>;</span></span><br><span class="line">                <span class="keyword">socklen_t</span> client_addrLength = <span class="keyword">sizeof</span>(struct sockaddr_in);</span><br><span class="line">                <span class="keyword">int</span> clientfd = accept( listener, ( struct sockaddr* )&amp;client_address, &amp;client_addrLength );</span><br><span class="line"></span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"client connection from: "</span></span><br><span class="line">                     &lt;&lt; inet_ntoa(client_address.sin_addr) &lt;&lt; <span class="string">":"</span></span><br><span class="line">                     &lt;&lt; ntohs(client_address.sin_port) &lt;&lt; <span class="string">", clientfd = "</span></span><br><span class="line">                     &lt;&lt; clientfd &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">                addfd(epfd, clientfd, <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 服务端用list保存用户连接</span></span><br><span class="line">                clients_list.push_back(clientfd);</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"Add new clientfd = "</span> &lt;&lt; clientfd &lt;&lt; <span class="string">" to epoll"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"Now there are "</span> &lt;&lt; clients_list.size() &lt;&lt; <span class="string">" clients int the chat room"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">                <span class="comment">// 服务端发送欢迎信息  </span></span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; <span class="string">"welcome message"</span> &lt;&lt; <span class="built_in">endl</span>;                </span><br><span class="line">                <span class="keyword">char</span> message[BUF_SIZE];</span><br><span class="line">                bzero(message, BUF_SIZE);</span><br><span class="line">                <span class="built_in">sprintf</span>(message, SERVER_WELCOME, clientfd);</span><br><span class="line">                <span class="keyword">int</span> ret = send(clientfd, message, BUF_SIZE, <span class="number">0</span>);</span><br><span class="line">                <span class="keyword">if</span>(ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    perror(<span class="string">"send error"</span>);</span><br><span class="line">                    Close();</span><br><span class="line">                    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">//处理用户发来的消息，并广播，使其他用户收到信息</span></span><br><span class="line">            <span class="keyword">else</span> &#123;   </span><br><span class="line">                <span class="keyword">int</span> ret = SendBroadcastMessage(sockfd);</span><br><span class="line">                <span class="keyword">if</span>(ret &lt; <span class="number">0</span>) &#123;</span><br><span class="line">                    perror(<span class="string">"error"</span>);</span><br><span class="line">                    Close();</span><br><span class="line">                    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭服务</span></span><br><span class="line">    Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>server.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CHATROOM_SERVER_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHATROOM_SERVER_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Common.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端类，用来处理客户端请求</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Server</span> &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 无参数构造函数</span></span><br><span class="line">    Server();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 初始化服务器端设置</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Init</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 关闭服务</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Close</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动服务端</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 广播消息给所有客户端</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">SendBroadcastMessage</span><span class="params">(<span class="keyword">int</span> clientfd)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 服务器端serverAddr信息</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">serverAddr</span>;</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">//创建监听的socket</span></span><br><span class="line">    <span class="keyword">int</span> listener;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// epoll_create创建后的返回值</span></span><br><span class="line">    <span class="keyword">int</span> epfd;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 客户端列表</span></span><br><span class="line">    <span class="built_in">list</span>&lt;<span class="keyword">int</span>&gt; clients_list;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//CHATROOM_SERVER_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>client.cpp<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Client.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端类成员函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端类构造函数</span></span><br><span class="line">Client::Client()&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化要连接的服务器地址和端口</span></span><br><span class="line">    serverAddr.sin_family = PF_INET;</span><br><span class="line">    serverAddr.sin_port = htons(SERVER_PORT);</span><br><span class="line">    serverAddr.sin_addr.s_addr = inet_addr(SERVER_IP);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化socket</span></span><br><span class="line">    sock = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 初始化进程号</span></span><br><span class="line">    pid = <span class="number">0</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 客户端状态</span></span><br><span class="line">    isClientwork = <span class="literal">true</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// epool fd</span></span><br><span class="line">    epfd = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 连接服务器</span></span><br><span class="line"><span class="keyword">void</span> Client::Connect() &#123;</span><br><span class="line">    <span class="built_in">cout</span> &lt;&lt; <span class="string">"Connect Server: "</span> &lt;&lt; SERVER_IP &lt;&lt; <span class="string">" : "</span> &lt;&lt; SERVER_PORT &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建socket</span></span><br><span class="line">    sock = socket(PF_INET, SOCK_STREAM, <span class="number">0</span>);</span><br><span class="line">    <span class="keyword">if</span>(sock &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"sock error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接服务端</span></span><br><span class="line">    <span class="keyword">if</span>(connect(sock, (struct sockaddr *)&amp;serverAddr, <span class="keyword">sizeof</span>(serverAddr)) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"connect error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建管道，其中fd[0]用于父进程读，fd[1]用于子进程写</span></span><br><span class="line">    <span class="keyword">if</span>(pipe(pipe_fd) &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"pipe error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建epoll</span></span><br><span class="line">    epfd = epoll_create(EPOLL_SIZE);</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">if</span>(epfd &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"epfd error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//将sock和管道读端描述符都添加到内核事件表中</span></span><br><span class="line">    addfd(epfd, sock, <span class="literal">true</span>);</span><br><span class="line">    addfd(epfd, pipe_fd[<span class="number">0</span>], <span class="literal">true</span>);</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 断开连接，清理并关闭文件描述符</span></span><br><span class="line"><span class="keyword">void</span> Client::Close() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(pid)&#123;</span><br><span class="line">       <span class="comment">//关闭父进程的管道和sock</span></span><br><span class="line">        close(pipe_fd[<span class="number">0</span>]);</span><br><span class="line">        close(sock);</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="comment">//关闭子进程的管道</span></span><br><span class="line">        close(pipe_fd[<span class="number">1</span>]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 启动客户端</span></span><br><span class="line"><span class="keyword">void</span> Client::Start() &#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// epoll 事件队列</span></span><br><span class="line">    <span class="keyword">static</span> <span class="class"><span class="keyword">struct</span> <span class="title">epoll_event</span> <span class="title">events</span>[2];</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 连接服务器</span></span><br><span class="line">    Connect();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 创建子进程</span></span><br><span class="line">    pid = fork();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 如果创建子进程失败则退出</span></span><br><span class="line">    <span class="keyword">if</span>(pid &lt; <span class="number">0</span>) &#123;</span><br><span class="line">        perror(<span class="string">"fork error"</span>);</span><br><span class="line">        close(sock);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">    &#125; <span class="keyword">else</span> <span class="keyword">if</span>(pid == <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="comment">// 进入子进程执行流程</span></span><br><span class="line">        <span class="comment">//子进程负责写入管道，因此先关闭读端</span></span><br><span class="line">        close(pipe_fd[<span class="number">0</span>]); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 输入exit可以退出聊天室</span></span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input 'exit' to exit the chat room"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 如果客户端运行正常则不断读取输入发送给服务端</span></span><br><span class="line">        <span class="keyword">while</span>(isClientwork)&#123;</span><br><span class="line">            bzero(&amp;message, BUF_SIZE);</span><br><span class="line">            fgets(message, BUF_SIZE, <span class="built_in">stdin</span>);</span><br><span class="line"></span><br><span class="line">            <span class="comment">// 客户输出exit,退出</span></span><br><span class="line">            <span class="keyword">if</span>(strncasecmp(message, EXIT, <span class="built_in">strlen</span>(EXIT)) == <span class="number">0</span>)&#123;</span><br><span class="line">                isClientwork = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 子进程将信息写入管道</span></span><br><span class="line">            <span class="keyword">else</span> &#123;</span><br><span class="line">                <span class="keyword">if</span>( write(pipe_fd[<span class="number">1</span>], message, <span class="built_in">strlen</span>(message) - <span class="number">1</span> ) &lt; <span class="number">0</span> ) &#123; </span><br><span class="line">                    perror(<span class="string">"fork error"</span>);</span><br><span class="line">                    <span class="built_in">exit</span>(<span class="number">-1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123; </span><br><span class="line">        <span class="comment">//pid &gt; 0 父进程</span></span><br><span class="line">        <span class="comment">//父进程负责读管道数据，因此先关闭写端</span></span><br><span class="line">        close(pipe_fd[<span class="number">1</span>]); </span><br><span class="line"></span><br><span class="line">        <span class="comment">// 主循环(epoll_wait)</span></span><br><span class="line">        <span class="keyword">while</span>(isClientwork) &#123;</span><br><span class="line">            <span class="keyword">int</span> epoll_events_count = epoll_wait( epfd, events, <span class="number">2</span>, <span class="number">-1</span> );</span><br><span class="line"></span><br><span class="line">            <span class="comment">//处理就绪事件</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; epoll_events_count ; ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                bzero(&amp;message, BUF_SIZE);</span><br><span class="line"></span><br><span class="line">                <span class="comment">//服务端发来消息</span></span><br><span class="line">                <span class="keyword">if</span>(events[i].data.fd == sock)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="comment">//接受服务端消息</span></span><br><span class="line">                    <span class="keyword">int</span> ret = recv(sock, message, BUF_SIZE, <span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// ret= 0 服务端关闭</span></span><br><span class="line">                    <span class="keyword">if</span>(ret == <span class="number">0</span>) &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &lt;&lt; <span class="string">"Server closed connection: "</span> &lt;&lt; sock &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                        close(sock);</span><br><span class="line">                        isClientwork = <span class="number">0</span>;</span><br><span class="line">                    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="built_in">cout</span> &lt;&lt; message &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="comment">//子进程写入事件发生，父进程处理并发送服务端</span></span><br><span class="line">                <span class="keyword">else</span> &#123; </span><br><span class="line">                    <span class="comment">//父进程从管道中读取数据</span></span><br><span class="line">                    <span class="keyword">int</span> ret = read(events[i].data.fd, message, BUF_SIZE);</span><br><span class="line"></span><br><span class="line">                    <span class="comment">// ret = 0</span></span><br><span class="line">                    <span class="keyword">if</span>(ret == <span class="number">0</span>)</span><br><span class="line">                        isClientwork = <span class="number">0</span>;</span><br><span class="line">                    <span class="keyword">else</span> &#123;</span><br><span class="line">                        <span class="comment">// 将信息发送给服务端</span></span><br><span class="line">                        send(sock, message, BUF_SIZE, <span class="number">0</span>);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;<span class="comment">//for</span></span><br><span class="line">        &#125;<span class="comment">//while</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 退出进程</span></span><br><span class="line">    Close();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>client.h<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">ifndef</span> CHATROOM_CLIENT_H</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> CHATROOM_CLIENT_H</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Common.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 客户端类，用来连接服务器发送和接收消息</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Client</span> &#123;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 无参数构造函数</span></span><br><span class="line">    Client();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接服务器</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Connect</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 断开连接</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Close</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 启动客户端</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Start</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前连接服务器端创建的socket</span></span><br><span class="line">    <span class="keyword">int</span> sock;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 当前进程ID</span></span><br><span class="line">    <span class="keyword">int</span> pid;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// epoll_create创建后的返回值</span></span><br><span class="line">    <span class="keyword">int</span> epfd;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建管道，其中fd[0]用于父进程读，fd[1]用于子进程写</span></span><br><span class="line">    <span class="keyword">int</span> pipe_fd[<span class="number">2</span>];</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 表示客户端是否正常工作</span></span><br><span class="line">    <span class="keyword">bool</span> isClientwork;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 聊天信息缓冲区</span></span><br><span class="line">    <span class="keyword">char</span> message[BUF_SIZE];</span><br><span class="line"></span><br><span class="line">    <span class="comment">//用户连接的服务器 IP + port</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">sockaddr_in</span> <span class="title">serverAddr</span>;</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span> <span class="comment">//CHATROOM_CLIENT_H</span></span></span><br></pre></td></tr></table></figure></p>
+<p>clientMain.cpp<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"Server.h"</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 服务端主函数</span></span><br><span class="line"><span class="comment">// 创建服务端对象后启动服务端</span></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span> </span>&#123;</span><br><span class="line">    Server server;</span><br><span class="line">    server.Start();</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>Makefile<br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">CC = g++</span><br><span class="line">CFLAGS = -<span class="built_in">std</span>=c++<span class="number">11</span></span><br><span class="line"></span><br><span class="line">all: ClientMain.cpp ServerMain.cpp Server.o Client.o</span><br><span class="line">	$(CC) $(CFLAGS) ServerMain.cpp  Server.o -o chatroom_server</span><br><span class="line">	$(CC) $(CFLAGS) ClientMain.cpp Client.o -o chatroom_client</span><br><span class="line"></span><br><span class="line">Server.o: Server.cpp Server.h Common.h</span><br><span class="line">	$(CC) $(CFLAGS) -c Server.cpp</span><br><span class="line"></span><br><span class="line">Client.o: Client.cpp Client.h Common.h</span><br><span class="line">	$(CC) $(CFLAGS) -c Client.cpp</span><br><span class="line"></span><br><span class="line">clean:</span><br><span class="line">	rm -f *.o chatroom_server chatroom_client</span><br></pre></td></tr></table></figure></p>
+<p>测试结果：<br>server:<br><img src="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-34-41.png" alt=""></p>
+<p>client 1:<br><img src="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-34-51.png" alt=""></p>
+<p>client 2:<br><img src="http://p4wiqzx0i.bkt.clouddn.com/Screenshot%20from%202018-10-04%2021-35-12.png" alt=""></p>
+<hr>
+<p>做的时候突然想到了以前做过的一个和这个很相似的东西，只不过上次做的时候使用node js来做的这次使用c++来实现的。</p>
+<p>index.html<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!doctype html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Socket.IO chat<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">      * &#123; margin: 0; padding: 0; box-sizing: border-box; &#125;</span></span><br><span class="line"><span class="undefined">      body &#123; font: 13px Helvetica, Arial; &#125;</span></span><br><span class="line"><span class="undefined">      form &#123; background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; &#125;</span></span><br><span class="line"><span class="undefined">      form input &#123; border: 0; padding: 10px; width: 90%; margin-right: .5%; &#125;</span></span><br><span class="line"><span class="undefined">      form button &#123; width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; &#125;</span></span><br><span class="line"><span class="undefined">      #messages &#123; list-style-type: none; margin: 0; padding: 0; &#125;</span></span><br><span class="line"><span class="undefined">      #messages li &#123; padding: 5px 10px; &#125;</span></span><br><span class="line"><span class="undefined">      #messages li:nth-child(odd) &#123; background: #eee; &#125;</span></span><br><span class="line"><span class="undefined">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"messages"</span>&gt;</span><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">form</span> <span class="attr">action</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"m"</span> <span class="attr">autocomplete</span>=<span class="string">"off"</span> /&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>Send<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br><span class="line"></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"/socket.io/socket.io.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"https://code.jquery.com/jquery-1.11.1.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">  	$(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript">	      <span class="keyword">var</span> socket = io();</span></span><br><span class="line"><span class="javascript">	      $(<span class="string">'form'</span>).submit(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">	        socket.emit(<span class="string">'chat message'</span>, $(<span class="string">'#m'</span>).val());</span></span><br><span class="line"><span class="javascript">		$(<span class="string">'#m'</span>).val(<span class="string">''</span>);</span></span><br><span class="line"><span class="javascript">		<span class="keyword">return</span> <span class="literal">false</span>;</span></span><br><span class="line"><span class="undefined">	      &#125;);</span></span><br><span class="line"><span class="javascript">	      socket.on(<span class="string">'chat message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">	        $(<span class="string">'#messages'</span>).append($(<span class="string">'&lt;li&gt;'</span>).text(msg));</span></span><br><span class="line"><span class="undefined">	      &#125;);</span></span><br><span class="line"><span class="undefined">        &#125;);</span></span><br><span class="line"><span class="undefined">      </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>index.js<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="built_in">require</span>(<span class="string">'express'</span>)();</span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>).Server(app);</span><br><span class="line"><span class="keyword">var</span> io = <span class="built_in">require</span>(<span class="string">'socket.io'</span>)(http);</span><br><span class="line"></span><br><span class="line">app.get(<span class="string">'/'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">	res.sendFile(__dirname + <span class="string">'/index.html'</span>);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.on(<span class="string">'connection'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">socket</span>)</span>&#123;</span><br><span class="line">	socket.broadcast.emit(<span class="string">'hi'</span>);</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'a user connected'</span>);</span><br><span class="line">	socket.on(<span class="string">'disconnect'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'user disconnected'</span>);</span><br><span class="line">	&#125;);</span><br><span class="line">	socket.on(<span class="string">'chat message'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">msg</span>)</span>&#123;</span><br><span class="line">	    <span class="built_in">console</span>.log(<span class="string">'message: '</span> + msg);</span><br><span class="line">	    io.emit(<span class="string">'chat message'</span>, msg);</span><br><span class="line">	&#125;);</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">io.emit(<span class="string">'some event'</span>, &#123;<span class="attr">for</span>: <span class="string">'everyone'</span>&#125;);</span><br><span class="line"></span><br><span class="line">http.listen(<span class="number">3000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'listening on 127.0.0.1:3000'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>package.json<br><figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">"name"</span>: <span class="string">"socket-chat-example"</span>,</span><br><span class="line">  <span class="attr">"version"</span>: <span class="string">"0.0.1"</span>,</span><br><span class="line">  <span class="attr">"description"</span>: <span class="string">"my first socket.io app"</span>,</span><br><span class="line">  <span class="attr">"dependencies"</span>: &#123;&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>记得安装这两个模块：</p>
+<p>npm install –save <a href="mailto:express@4.15.2" target="_blank" rel="noopener">express@4.15.2</a></p>
+<p>npm install –save socket.io</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/c/" rel="tag"># c++</a>
+          
+            <a href="/tags/nodejs/" rel="tag"># nodejs</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/04/XSS/" rel="next" title="Collabtive and XSS ">
+                <i class="fa fa-chevron-left"></i> Collabtive and XSS 
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p4wiqzx0i.bkt.clouddn.com/image4.jpg"
+                alt="kai" />
+            
+              <p class="site-author-name" itemprop="name">kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">5</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ruruozhenhao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ruruozhenhao@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitbook.com/learncat" target="_blank" title="Gitbook"><i class="fa fa-fw fa-bookmark"></i>Gitbook</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/ruruozhenhao/" target="_blank" title="cnblog"><i class="fa fa-fw fa-globe"></i>cnblog</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kai</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
