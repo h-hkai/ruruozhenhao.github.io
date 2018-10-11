@@ -108,24 +108,24 @@
 
 
 
-  <meta name="keywords" content="security">
+  <meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Race condition vulnerability experiment">
-<meta property="og:url" content="http://yoursite.com/2018/10/02/Race-condition-vulnerability-experiment/index.html">
+<meta property="og:title" content="Python3 image steganography">
+<meta property="og:url" content="http://yoursite.com/2018/10/11/Python3-image-steganography/index.html">
 <meta property="og:site_name" content="learncat">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/1525930945137.png">
-<meta property="og:updated_time" content="2018-10-02T10:52:41.873Z">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/1473383473422.png">
+<meta property="og:updated_time" content="2018-10-11T09:38:38.260Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Race condition vulnerability experiment">
-<meta name="twitter:image" content="http://p4wiqzx0i.bkt.clouddn.com/1525930945137.png">
+<meta name="twitter:title" content="Python3 image steganography">
+<meta name="twitter:image" content="http://p4wiqzx0i.bkt.clouddn.com/1473383473422.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/02/Race-condition-vulnerability-experiment/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/10/11/Python3-image-steganography/"/>
 
 
 
@@ -135,7 +135,7 @@
   };
 </script>
 
-  <title>Race condition vulnerability experiment | learncat</title>
+  <title>Python3 image steganography | learncat</title>
   
 
 
@@ -312,7 +312,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/Race-condition-vulnerability-experiment/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/Python3-image-steganography/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="kai">
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Race condition vulnerability experiment
+          <h1 class="post-title" itemprop="name headline">Python3 image steganography
               
             
           </h1>
@@ -354,7 +354,7 @@
                 
               
 
-              <time title="Created: 2018-10-02 18:39:00 / Modified: 18:52:41" itemprop="dateCreated datePublished" datetime="2018-10-02T18:39:00+08:00">2018-10-02</time>
+              <time title="Created: 2018-10-11 12:23:00 / Modified: 17:38:38" itemprop="dateCreated datePublished" datetime="2018-10-11T12:23:00+08:00">2018-10-11</time>
             
 
             
@@ -376,7 +376,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/security/" itemprop="url" rel="index"><span itemprop="name">security</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/python/" itemprop="url" rel="index"><span itemprop="name">python</span></a></span>
 
                 
                 
@@ -410,25 +410,13 @@
       
 
       
-        <p><img src="http://p4wiqzx0i.bkt.clouddn.com/1525930945137.png" alt=""></p>
-<a id="more"></a>
-<p>竞态条件漏洞实验</p>
+        <p><img src="http://p4wiqzx0i.bkt.clouddn.com/1473383473422.png" alt=""><br><a id="more"></a></p>
+<p>大致分析了一下，还有很多地方没有弄明白。</p>
+<p>code:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">取得一个 PIL 图像并且更改所有值为偶数（使最低有效位为 0）</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">makeImageEven</span><span class="params">(image)</span>:</span></span><br><span class="line">    pixels = list(image.getdata())  <span class="comment"># 得到一个这样的列表： [(r,g,b,t),(r,g,b,t)...]</span></span><br><span class="line">    evenPixels = [(r&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>,g&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>,b&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>,t&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>) <span class="keyword">for</span> [r,g,b,t] <span class="keyword">in</span> pixels]  <span class="comment"># 更改所有值为偶数（魔法般的移位）</span></span><br><span class="line">    evenImage = Image.new(image.mode, image.size)  <span class="comment"># 创建一个相同大小的图片副本</span></span><br><span class="line">    evenImage.putdata(evenPixels)  <span class="comment"># 把上面的像素放入到图片副本</span></span><br><span class="line">    <span class="keyword">return</span> evenImage</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">内置函数 bin() 的替代，返回固定长度的二进制字符串</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">constLenBin</span><span class="params">(int)</span>:</span></span><br><span class="line">    binary = <span class="string">"0"</span>*(<span class="number">8</span>-(len(bin(int))<span class="number">-2</span>))+bin(int).replace(<span class="string">'0b'</span>,<span class="string">''</span>)  <span class="comment"># 去掉 bin() 返回的二进制字符串中的 '0b'，并在左边补足 '0' 直到字符串长度为 8</span></span><br><span class="line">    <span class="keyword">return</span> binary</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">将字符串编码到图片中</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">encodeDataInImage</span><span class="params">(image, data)</span>:</span></span><br><span class="line">    evenImage = makeImageEven(image)  <span class="comment"># 获得最低有效位为 0 的图片副本</span></span><br><span class="line">    binary = <span class="string">''</span>.join(map(constLenBin,bytearray(data, <span class="string">'utf-8'</span>))) <span class="comment"># 将需要被隐藏的字符串转换成二进制字符串</span></span><br><span class="line">    <span class="keyword">if</span> len(binary) &gt; len(image.getdata()) * <span class="number">4</span>:  <span class="comment"># 如果不可能编码全部数据， 抛出异常</span></span><br><span class="line">        <span class="keyword">raise</span> Exception(<span class="string">"Error: Can't encode more than "</span> + len(evenImage.getdata()) * <span class="number">4</span> + <span class="string">" bits in this image. "</span>)</span><br><span class="line">    encodedPixels = [(r+int(binary[index*<span class="number">4</span>+<span class="number">0</span>]),g+int(binary[index*<span class="number">4</span>+<span class="number">1</span>]),b+int(binary[index*<span class="number">4</span>+<span class="number">2</span>]),t+int(binary[index*<span class="number">4</span>+<span class="number">3</span>])) <span class="keyword">if</span> index*<span class="number">4</span> &lt; len(binary) <span class="keyword">else</span> (r,g,b,t) <span class="keyword">for</span> index,(r,g,b,t) <span class="keyword">in</span> enumerate(list(evenImage.getdata()))] <span class="comment"># 将 binary 中的二进制字符串信息编码进像素里</span></span><br><span class="line">    encodedImage = Image.new(evenImage.mode, evenImage.size)  <span class="comment"># 创建新图片以存放编码后的像素</span></span><br><span class="line">    encodedImage.putdata(encodedPixels)  <span class="comment"># 添加编码后的数据</span></span><br><span class="line">    <span class="keyword">return</span> encodedImage</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">从二进制字符串转为 UTF-8 字符串</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">binaryToString</span><span class="params">(binary)</span>:</span></span><br><span class="line">    index = <span class="number">0</span></span><br><span class="line">    string = []</span><br><span class="line">    rec = <span class="keyword">lambda</span> x, i: x[<span class="number">2</span>:<span class="number">8</span>] + (rec(x[<span class="number">8</span>:], i<span class="number">-1</span>) <span class="keyword">if</span> i &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="string">''</span>) <span class="keyword">if</span> x <span class="keyword">else</span> <span class="string">''</span></span><br><span class="line">    <span class="comment"># rec = lambda x, i: x and (x[2:8] + (i &gt; 1 and rec(x[8:], i-1) or '')) or ''</span></span><br><span class="line">    fun = <span class="keyword">lambda</span> x, i: x[i+<span class="number">1</span>:<span class="number">8</span>] + rec(x[<span class="number">8</span>:], i<span class="number">-1</span>)</span><br><span class="line">    <span class="keyword">while</span> index + <span class="number">1</span> &lt; len(binary):</span><br><span class="line">        chartype = binary[index:].index(<span class="string">'0'</span>) <span class="comment"># 存放字符所占字节数，一个字节的字符会存为 0</span></span><br><span class="line">        length = chartype*<span class="number">8</span> <span class="keyword">if</span> chartype <span class="keyword">else</span> <span class="number">8</span></span><br><span class="line">        string.append(chr(int(fun(binary[index:index+length],chartype),<span class="number">2</span>)))</span><br><span class="line">        index += length</span><br><span class="line">    <span class="keyword">return</span> <span class="string">''</span>.join(string)</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">解码隐藏数据</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">decodeImage</span><span class="params">(image)</span>:</span></span><br><span class="line">    pixels = list(image.getdata())  <span class="comment"># 获得像素列表</span></span><br><span class="line">    binary = <span class="string">''</span>.join([str(int(r&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>!=r))+str(int(g&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>!=g))+str(int(b&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>!=b))+str(int(t&gt;&gt;<span class="number">1</span>&lt;&lt;<span class="number">1</span>!=t)) <span class="keyword">for</span> (r,g,b,t) <span class="keyword">in</span> pixels]) <span class="comment"># 提取图片中所有最低有效位中的数据</span></span><br><span class="line">    <span class="comment"># 找到数据截止处的索引</span></span><br><span class="line">    locationDoubleNull = binary.find(<span class="string">'0000000000000000'</span>)</span><br><span class="line">    endIndex = locationDoubleNull+(<span class="number">8</span>-(locationDoubleNull % <span class="number">8</span>)) <span class="keyword">if</span> locationDoubleNull%<span class="number">8</span> != <span class="number">0</span> <span class="keyword">else</span> locationDoubleNull</span><br><span class="line">    data = binaryToString(binary[<span class="number">0</span>:endIndex])</span><br><span class="line">    <span class="keyword">return</span> data</span><br><span class="line"></span><br><span class="line">encodeDataInImage(Image.open(<span class="string">"coffee.png"</span>), <span class="string">'你好世界，Hello world!'</span>).save(<span class="string">'encodeImage.png'</span>)</span><br><span class="line">print(decodeImage(Image.open(<span class="string">"encodeImage.png"</span>)))</span><br></pre></td></tr></table></figure></p>
+<p>note:</p>
 <blockquote>
-<p>$ sudo su<br>$ echo 0 &gt; /proc/sys/fs/protected_symlinks<br>$ exit</p>
 </blockquote>
-<blockquote>
-<p>fs.protected_symlinks<br>用于限制普通用户建立软链接<br>0：不限制用户建立软链接<br>1：限制，允许用户建立软连接的情况是 软连接所在目录是全局可读写目录或者软连接的uid与跟从者的uid匹配，又或者目录所有者与软连接所有者匹配</p>
-</blockquote>
-<blockquote>
-<p>$ cd /home/shiyanlou/seed<br>$ sudo vi vulp.c</p>
-</blockquote>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* vulp.c */</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;unistd.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> DELAY 10000</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">char</span> * fn = <span class="string">"/tmp/XYZ"</span>;</span><br><span class="line">    <span class="keyword">char</span> buffer[<span class="number">60</span>];</span><br><span class="line">    FILE *fp;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">int</span> i;</span><br><span class="line">    <span class="comment">/* get user input */</span></span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%50s"</span>, buffer );</span><br><span class="line">    <span class="keyword">if</span>(!access(fn, W_OK))&#123;</span><br><span class="line">        <span class="keyword">for</span>(i=<span class="number">0</span>; i &lt; DELAY; i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> a = i^<span class="number">2</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        fp = fopen(fn, <span class="string">"a+"</span>);</span><br><span class="line">        fwrite(<span class="string">"\n"</span>, <span class="keyword">sizeof</span>(<span class="keyword">char</span>), <span class="number">1</span>, fp);</span><br><span class="line">        fwrite(buffer, <span class="keyword">sizeof</span>(<span class="keyword">char</span>), <span class="built_in">strlen</span>(buffer), fp);</span><br><span class="line">        fclose(fp);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="built_in">printf</span>(<span class="string">"No permission \n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>实验1: 利用竞态条件漏洞<br><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">$</span> ls -l</span><br><span class="line">-rw-rw-r-- 1 shiyanlou shiyanlou   10 Apr 23 13:33 append_text  《--VULP输入文件</span><br><span class="line">-rw-rw-r-- 1 root      root         0 Apr 23 13:32 root_file  《--目标文件</span><br><span class="line">-rw-rw-r-- 1 shiyanlou shiyanlou    0 Apr 23 13:45 tmp_file  《--助攻</span><br><span class="line">-rwsr-xr-x 1 root      root      7403 Apr 23 13:27 vulp  《--漏洞文件</span><br><span class="line">-rw-r--r-- 1 root      root       454 Apr 23 13:27 vulp.c</span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<blockquote>
-<p>$ sudo gcc vulp.c -o vulp</p>
-</blockquote>
+<p>最低有效位（英语：Least Significant Bit，lsb）是指一个二进制数字中的第0位（即最低位），权值为2^0，可以用它来检测数的奇偶性。与之相反的称之为最高有效位。在大端序中，lsb指最右边的位。<br>最低有效位代表二进制数中的最小的单位，可以用来指示数字很小的变化。<br>LSB（全大写）有时也指Least Significant Byte，指多字节序列中最小权重的字节。</p>
 
       
     </div>
@@ -449,7 +437,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/security/" rel="tag"># security</a>
+            <a href="/tags/python/" rel="tag"># python</a>
           
         </div>
       
@@ -462,8 +450,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/02/Python-image-convert-string/" rel="next" title="Python image convert string">
-                <i class="fa fa-chevron-left"></i> Python image convert string
+              <a href="/2018/10/10/PIL-resize-image/" rel="next" title="PIL change image">
+                <i class="fa fa-chevron-left"></i> PIL change image
               </a>
             
           </div>
@@ -472,8 +460,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/03/Format-string-vulnerability-experiment/" rel="prev" title="Format string vulnerability experiment">
-                Format string vulnerability experiment <i class="fa fa-chevron-right"></i>
+              <a href="/2018/10/11/Turing-machine-and-Turing-test/" rel="prev" title="Turing machine and Turing test">
+                Turing machine and Turing test <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
