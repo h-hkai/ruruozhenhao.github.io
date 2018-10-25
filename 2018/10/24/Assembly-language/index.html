@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="keywords" content="assembly">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Assembly language">
+<meta property="og:url" content="http://yoursite.com/2018/10/24/Assembly-language/index.html">
+<meta property="og:site_name" content="learncat">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://p4wiqzx0i.bkt.clouddn.com/resize_huibian.jpeg">
+<meta property="og:image" content="https://dn-simplecloud.shiyanlou.com/8029611540380109738-wm">
+<meta property="og:image" content="https://dn-simplecloud.shiyanlou.com/8029611540381058721-wm">
+<meta property="og:image" content="https://dn-simplecloud.shiyanlou.com/8029611540467753293-wm">
+<meta property="og:updated_time" content="2018-10-25T11:52:50.414Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Assembly language">
+<meta name="twitter:image" content="http://p4wiqzx0i.bkt.clouddn.com/resize_huibian.jpeg">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/10/24/Assembly-language/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Assembly language | learncat</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">learncat</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-schedule">
+    <a href="/schedule/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-calendar"></i> <br />Schedule</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-sitemap">
+    <a href="/sitemap.xml" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />Sitemap</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/24/Assembly-language/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="kai">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="http://p4wiqzx0i.bkt.clouddn.com/image4.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="learncat">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Assembly language
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-10-24 19:51:00" itemprop="dateCreated datePublished" datetime="2018-10-24T19:51:00+08:00">2018-10-24</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-10-25 19:52:50" itemprop="dateModified" datetime="2018-10-25T19:52:50+08:00">2018-10-25</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/assembly/" itemprop="url" rel="index"><span itemprop="name">assembly</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="http://p4wiqzx0i.bkt.clouddn.com/resize_huibian.jpeg" alt=""></p>
+<a id="more"></a>
+<h1 id="一-DOS及DEBUG介绍："><a href="#一-DOS及DEBUG介绍：" class="headerlink" title="一 DOS及DEBUG介绍："></a>一 DOS及DEBUG介绍：</h1><h3 id="1-DEBUG的主要命令"><a href="#1-DEBUG的主要命令" class="headerlink" title="1. DEBUG的主要命令"></a><strong>1. DEBUG的主要命令</strong></h3><h4 id="DEBUG命令有20多个，我们主要学习最常用的命令。"><a href="#DEBUG命令有20多个，我们主要学习最常用的命令。" class="headerlink" title="DEBUG命令有20多个，我们主要学习最常用的命令。"></a><strong>DEBUG命令有20多个，我们主要学习最常用的命令。</strong></h4><p>R ——查看和修改寄存器<br>D ——查看内存单元<br>E ——修改内存单元<br>U ——反汇编，将机器指令变为汇编指令<br>T /P——单步执行<br>G ——连续执行程序<br>A ——输入汇编指令<br>Q ——退出</p>
+<h3 id="2-本书用到的简单的DOS命令："><a href="#2-本书用到的简单的DOS命令：" class="headerlink" title="2. 本书用到的简单的DOS命令："></a><strong>2. 本书用到的简单的DOS命令：</strong></h3><p>cd\ ——首先要用cd\ 退回到根目录C&gt;下<br>dir ——显示文件列表<br>md hb ——建立hb子目录<br>cd hb ——进入hb子目录<br>copy d:\dos\masm.exe c:\hb ——将D盘dos目录下的masm.exe拷贝到C盘hb目录下<br>copy d:\dos\link.exe c:\hb ——将D盘dos目录下的link.exe拷贝到C盘hb目录下<br>cd .. ——退回到上一级目录<br>del \hb\masm.exe ——删除hb子目录中的某文件<br>rd hb ——删除hb子目录（子目录中的所有文件必须先删除）<br>e：——进入e盘<br>cls ——清屏<br>type——显示文本文件内容（如type c:\hb\abc.asm）</p>
+<h3 id="3-数的补码表示"><a href="#3-数的补码表示" class="headerlink" title="3. 数的补码表示:"></a><strong>3. 数的补码表示:</strong></h3><p>在计算机中，对带符号数可用真值和机器数两个概念表示。真值，就是带有“+”、“-”号的实际数值；所谓机器数，则是把“+”、“-”符号数值化（0、1）后所得到的计算机实际能表示的数。<br>机器数有三种码表示，分别是原码、反码和补码。汇编语言中，数都是以补码的形式表示的，因此必须掌握数的补码表示和补码的运算。这三种码的定义如下：<br>原码。原码将最高位作为符号位，正数为0，负数为1，其余7位作为数值位。<br>反码。正数的反码与正数的原码一样。而求负数的反码时，符号位为1，数值位在原码的基础上求反。<br>补码。正数的补码与正数的原码一样。求负数的补码时，符号位为1，数值位在原码的基础上求反加1。<br>例 十进制数+5和-5分别表示成二进制数原码、反码和补码。<br>[+5]原=[+5]反=[+5]补=00000101B<br>[-5]原=10000101B<br>[-5]反=11111010B<br>[-5]补=11111011B</p>
+<h3 id="4-8086寄存器组"><a href="#4-8086寄存器组" class="headerlink" title="4. 8086寄存器组"></a><strong>4. 8086寄存器组</strong></h3><p>8086寄存器都是16位的寄存器，根据用途可分为4种类型。分别是数据寄存器、地址寄存器、段寄存器和控制寄存器。如图所示。 img</p>
+<p>数据寄存器中每个寄存器又可以分为2个8位的寄存器。分别为AH、AL，BH、BL，CH、CL，DH、DL。H表示高字节（高8位）寄存器、L表示低字节（低8位）寄存器。例如 用AX寄存器存放一个字1234H，表示为(AX)=1234H，即高字节12放在AH，低字节34放在AL中。</p>
+<p>地址寄存器包括指针和变址寄存器SP、BP、SI、DI四个16位寄存器。顾名思义，它们可用来存放存储器操作数的偏移地址。另外，它们也可以作为通用寄存器用。</p>
+<p>8086CPU有4个16位的段寄存器，分别是CS代码段寄存器、DS数据段寄存器、ES附加段寄存器、SS堆栈段寄存器。</p>
+<h3 id="5-8086寄存器组"><a href="#5-8086寄存器组" class="headerlink" title="5. 8086寄存器组"></a><strong>5. 8086寄存器组</strong></h3><p>8086寄存器都是16位的寄存器，根据用途可分为4种类型。分别是数据寄存器、地址寄存器、段寄存器和控制寄存器。如图所示。 img</p>
+<p>数据寄存器中每个寄存器又可以分为2个8位的寄存器。分别为AH、AL，BH、BL，CH、CL，DH、DL。H表示高字节（高8位）寄存器、L表示低字节（低8位）寄存器。例如 用AX寄存器存放一个字1234H，表示为(AX)=1234H，即高字节12放在AH，低字节34放在AL中。</p>
+<p>地址寄存器包括指针和变址寄存器SP、BP、SI、DI四个16位寄存器。顾名思义，它们可用来存放存储器操作数的偏移地址。另外，它们也可以作为通用寄存器用。</p>
+<p>8086CPU有4个16位的段寄存器，分别是CS代码段寄存器、DS数据段寄存器、ES附加段寄存器、SS堆栈段寄存器。</p>
+<hr>
+<p><img src="https://dn-simplecloud.shiyanlou.com/8029611540380109738-wm" alt="实验楼"></p>
+<p><img src="https://dn-simplecloud.shiyanlou.com/8029611540381058721-wm" alt="实验楼"></p>
+<h5 id="DOS命令用法"><a href="#DOS命令用法" class="headerlink" title="DOS命令用法"></a><strong>DOS命令用法</strong></h5><ol>
+<li>列表项目<br>DIR == 进入根目录<br>CD [filename] == 进入子目录</li>
+</ol>
+<h5 id="DEBUG命令用法"><a href="#DEBUG命令用法" class="headerlink" title="DEBUG命令用法"></a><strong>DEBUG命令用法</strong></h5><p>通过改变IP的值可以在不同的位置进行–输入汇编指令和反汇编。</p>
+<p>tips:</p>
+<blockquote>
+<p>在做的过程中遇到十进制转十六进制这样的问题，自己算！（怎么可能…）想到了以前用Python时进行的进制转换用着还是比较方便的。<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 十进制转十六进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hex(<span class="number">56</span>)</span><br><span class="line"><span class="string">'0x38'</span></span><br><span class="line"><span class="comment"># 十六进制转十进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'0xFFF'</span>, <span class="number">16</span>)</span><br><span class="line"><span class="number">4095</span></span><br><span class="line"><span class="comment"># 二进制转十进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'11101'</span>, <span class="number">2</span>)</span><br><span class="line"><span class="number">29</span></span><br><span class="line"><span class="comment"># 八进制转十进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>int(<span class="string">'764'</span>, <span class="number">8</span>)</span><br><span class="line"><span class="number">500</span></span><br><span class="line"><span class="comment"># 二进制转十六进制</span></span><br><span class="line"><span class="meta">&gt;&gt;&gt; </span>hex(int(<span class="string">'11101'</span>, <span class="number">2</span>))</span><br><span class="line"><span class="string">'0x1d'</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<blockquote>
+<p>是不是特别方便^_^<br><a href="https://blog.csdn.net/u012063703/article/details/42609833" target="_blank" rel="noopener">more</a></p>
+</blockquote>
+<h1 id="2-寻址方式"><a href="#2-寻址方式" class="headerlink" title="2 寻址方式:"></a>2 寻址方式:</h1><p>汇编指令由操作码字段和操作数字段构成。对于双操作指令，第一个操作数称为目的操作数，表示操作后的结果；第二个操作数称为源操作数，表示来源操作数。两者以逗号分隔。如：</p>
+<p>img</p>
+<p>所谓寻址方式，即指令中提供操作数或操作数地址的方式。通俗地说就是寻找操作数地址的方法。寻址方式的数量代表了微机系统对存储器管理能力的强弱，合理地使用寻址方式可以扩大访存空间，缩短指令长度，满足各种程序设计需要。与数据有关的寻址方式划分为三类：立即寻址方式，寄存器寻址方式，存储器寻址方式。</p>
+<h4 id="1-立即寻址方式"><a href="#1-立即寻址方式" class="headerlink" title="1. 立即寻址方式"></a>1. 立即寻址方式</h4><p>所要找的操作数直接写在指令中，这种操作数叫立即数。在8086、80286中立即数是8位或16位的，在80386以上可以是32位的立即数。立即寻址方式用来表示常数。<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-A</span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AX</span>，<span class="number">3060</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AL</span>，<span class="number">5</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">BL</span>，FF</span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">BX</span>，A46D </span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">CX</span>，<span class="number">17</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="2-寄存器寻址方式"><a href="#2-寄存器寻址方式" class="headerlink" title="2. 寄存器寻址方式"></a>2. 寄存器寻址方式</h4><p>在寄存器寻址方式中，操作数在寄存器中，在指令中指定寄存器名即可。</p>
+<figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-A</span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AX</span>，<span class="number">0</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">BX</span>，<span class="number">1234</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AX</span>，<span class="built_in">BX</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">CL</span>，<span class="number">AH</span></span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AX</span>，<span class="number">4650</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-直接寻址方式"><a href="#3-直接寻址方式" class="headerlink" title="3. 直接寻址方式"></a>3. 直接寻址方式</h4><p>操作数存放在内存中。操作数的偏移地址（也称为有效地址EA）直接写在指令中。</p>
+<p>（1）存储器读操作</p>
+<p>MOV指令可以实现CPU对存储器的读写。若传送指令的目的操作数是CPU的寄存器，源操作数是存储单元，就完成了对存储器的读操作。</p>
+<p>例1 MOV AX，DS:[2000H]<br>该指令表示从数据段的2000H单元读出一个字送入AX。</p>
+<p>（2）存储器写操作</p>
+<p>如果要实现CPU写内存操作，只要把MOV指令的目的操作数变为存储单元，源操作数为CPU的寄存器即可。</p>
+<p>例2 MOV DS:[4000H]，AX<br>将AX的值写入数据段的4000H单元。<br><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">-A</span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">AX</span>，<span class="built_in">DS</span>:[<span class="number">2000</span>]</span><br><span class="line"><span class="keyword">MOV</span> <span class="built_in">DS</span>:[<span class="number">4000</span>]，<span class="built_in">AX</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="4-寄存器间接寻址方式"><a href="#4-寄存器间接寻址方式" class="headerlink" title="4. 寄存器间接寻址方式"></a>4. 寄存器间接寻址方式</h4><p>操作数存放在内存中。指令形式如： MOV AX，[BX]<br>操作数的EA在基址寄存器BX、BP或变址寄存器SI、DI中，而操作数的段地址在数据段DS或堆栈段SS中。如果有效地址由BX、SI、DI指出，则默认为对应于数据段，而用BP指出则对应于堆栈段。<br><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">R DS <span class="number">1500</span></span></span><br><span class="line"><span class="ruby">-E <span class="symbol">DS:</span><span class="number">4580</span>  <span class="number">64</span> <span class="number">23</span></span></span><br><span class="line"><span class="ruby">-D <span class="symbol">DS:</span><span class="number">4580</span></span></span><br><span class="line"><span class="ruby">-A</span></span><br><span class="line"><span class="ruby">MOV BX，<span class="number">4580</span></span></span><br><span class="line"><span class="ruby">MOV AX，[BX]</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="5-寄存器相对寻址方式"><a href="#5-寄存器相对寻址方式" class="headerlink" title="5. 寄存器相对寻址方式"></a>5. 寄存器相对寻址方式</h4><p>操作数存放在内存中。指令形式如： MOV AX，[BX+1200H]<br>操作数的EA是一个基址或变址寄存器的内容再加上8位或16位位移量之和。也就是说在寄存器间接寻址的基础上，增加一个相对量（位移量）。这个位移量可以是立即数，也可以是符号地址。 </p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">R DS <span class="number">1500</span></span></span><br><span class="line"><span class="ruby">-E <span class="symbol">DS:</span><span class="number">7335</span>  <span class="number">28</span> <span class="number">24</span></span></span><br><span class="line"><span class="ruby">-D <span class="symbol">DS:</span><span class="number">7335</span></span></span><br><span class="line"><span class="ruby">-A</span></span><br><span class="line"><span class="ruby">MOV SI，<span class="number">7310</span></span></span><br><span class="line"><span class="ruby">MOV AX，<span class="number">25</span>[SI]</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-基址变址寻址方式"><a href="#6-基址变址寻址方式" class="headerlink" title="6. 基址变址寻址方式"></a>6. 基址变址寻址方式</h4><p>操作数存放在内存中。指令形式如： MOV AX，[BX+SI]<br>操作数的EA为一个基址寄存器和一个变址寄存器的内容之和。</p>
+<h4 id="7-相对基址变址寻址方式"><a href="#7-相对基址变址寻址方式" class="headerlink" title="7. 相对基址变址寻址方式"></a>7. 相对基址变址寻址方式</h4><p>操作数存放在内存中。指令形式如： MOV AX，[BX+SI+1200H]<br>操作数的EA为一个基址寄存器加一个变址寄存器再加一个位移量，三者之和。可用于二维表查表和栈处理。</p>
+<h3 id="3-2-实验任务"><a href="#3-2-实验任务" class="headerlink" title="3.2 实验任务"></a><strong>3.2 实验任务</strong></h3><ol>
+<li>实验目的</li>
+</ol>
+<p>通过实验观察和分析在不同的寻址方式下存储单元逻辑地址的表示以及指令的执行结果。熟练掌握DEBUG的R命令、A命令、T命令和D命令的用法。</p>
+<ol start="2">
+<li>实验内容</li>
+</ol>
+<p>参考示例一和各种寻址方式完成下列实验内容：</p>
+<p>（1）两个操作数相减运算，结果放在数据段的16号单元。</p>
+<blockquote>
+<p>1）AX、BX寄存器分别赋值为0008H和0010H。<br>2）AX和BX的内容相减（SUB指令），结果在AX中。<br>3）用直接寻址方式将相减的结果保存到16号单元。</p>
+</blockquote>
+<p><img src="https://dn-simplecloud.shiyanlou.com/8029611540467753293-wm" alt="实验楼"></p>
+<p>（2）两个操作数相加运算，结果放在附加段的0020H号单元。</p>
+<blockquote>
+<p>1）AX的值为0034H。<br>2）AX和65相加，结果在AX中。<br>3）用寄存器间接寻址方式（段超越）保存运算结果。</p>
+</blockquote>
+<p>（3）将AX寄存器中的1234H写入数据段的2号单元，读出3号单元的12H传送给BL寄存器。（寻址方式自定）</p>
+<ol start="3">
+<li>实验要求<blockquote>
+<p>（1）写出相关命令及操作步骤<br>（2）实验内容用截图形式记录实验结果<br>（3）写出实验结果分析。</p>
+</blockquote>
+</li>
+</ol>
+<hr>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/assembly/" rel="tag"># assembly</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/10/24/leetcode-commemoration-day/" rel="next" title="leetcode commemoration day">
+                <i class="fa fa-chevron-left"></i> leetcode commemoration day
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="http://p4wiqzx0i.bkt.clouddn.com/image4.jpg"
+                alt="kai" />
+            
+              <p class="site-author-name" itemprop="name">kai</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">29</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">20</span>
+                    <span class="site-state-item-name">categories</span>
+                  
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">15</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/ruruozhenhao" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:ruruozhenhao@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://gitbook.com/learncat" target="_blank" title="Gitbook"><i class="fa fa-fw fa-bookmark"></i>Gitbook</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="http://www.cnblogs.com/ruruozhenhao/" target="_blank" title="cnblog"><i class="fa fa-fw fa-globe"></i>cnblog</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-DOS及DEBUG介绍："><span class="nav-number">1.</span> <span class="nav-text">一 DOS及DEBUG介绍：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-DEBUG的主要命令"><span class="nav-number">1.0.1.</span> <span class="nav-text">1. DEBUG的主要命令</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DEBUG命令有20多个，我们主要学习最常用的命令。"><span class="nav-number">1.0.1.1.</span> <span class="nav-text">DEBUG命令有20多个，我们主要学习最常用的命令。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-本书用到的简单的DOS命令："><span class="nav-number">1.0.2.</span> <span class="nav-text">2. 本书用到的简单的DOS命令：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-数的补码表示"><span class="nav-number">1.0.3.</span> <span class="nav-text">3. 数的补码表示:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-8086寄存器组"><span class="nav-number">1.0.4.</span> <span class="nav-text">4. 8086寄存器组</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-8086寄存器组"><span class="nav-number">1.0.5.</span> <span class="nav-text">5. 8086寄存器组</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#DOS命令用法"><span class="nav-number">1.0.5.0.1.</span> <span class="nav-text">DOS命令用法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#DEBUG命令用法"><span class="nav-number">1.0.5.0.2.</span> <span class="nav-text">DEBUG命令用法</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-寻址方式"><span class="nav-number">2.</span> <span class="nav-text">2 寻址方式:</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-立即寻址方式"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">1. 立即寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-寄存器寻址方式"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">2. 寄存器寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-直接寻址方式"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">3. 直接寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-寄存器间接寻址方式"><span class="nav-number">2.0.0.4.</span> <span class="nav-text">4. 寄存器间接寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-寄存器相对寻址方式"><span class="nav-number">2.0.0.5.</span> <span class="nav-text">5. 寄存器相对寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-基址变址寻址方式"><span class="nav-number">2.0.0.6.</span> <span class="nav-text">6. 基址变址寻址方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#7-相对基址变址寻址方式"><span class="nav-number">2.0.0.7.</span> <span class="nav-text">7. 相对基址变址寻址方式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-实验任务"><span class="nav-number">2.0.1.</span> <span class="nav-text">3.2 实验任务</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kai</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
