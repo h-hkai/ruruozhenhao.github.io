@@ -441,7 +441,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">478</span>
+                <span title="Symbols count in article">1.2k</span>
               
 
               
@@ -477,9 +477,27 @@
       
         <p><img src="http://p4wiqzx0i.bkt.clouddn.com/1530236619450.png" alt=""></p>
 <a id="more"></a>
-<p>img.py<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">Usage: python3 img.py [image_name] [save_name]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -h --help       show this on screen.</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'image_name'</span>)</span><br><span class="line">parser.add_argument(<span class="string">'save_name'</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">img_name = args.file1</span><br><span class="line">save_name = args.file2</span><br><span class="line"></span><br><span class="line">myqr.run(words=<span class="string">'https://www.shiyanlou.com'</span>,</span><br><span class="line">        picture=img_name,</span><br><span class="line">        save_name=save_name,</span><br><span class="line">        colorized=<span class="keyword">True</span>)</span><br></pre></td></tr></table></figure></p>
-<p>生成的图片：<br><img src="http://p4wiqzx0i.bkt.clouddn.com/mywebsite.gif" alt=""></p>
-
+<p>img.py<br></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">Usage: python3 img.py [image_name] [save_name]</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -h --help       show this on screen.</span></span><br><span class="line"><span class="string">&quot;&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> MyQR <span class="keyword">import</span> myqr</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&apos;image_name&apos;</span>)</span><br><span class="line">parser.add_argument(<span class="string">&apos;save_name&apos;</span>)</span><br><span class="line"></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">img_name = args.file1</span><br><span class="line">save_name = args.file2</span><br><span class="line"></span><br><span class="line">myqr.run(words=<span class="string">&apos;https://www.shiyanlou.com&apos;</span>,</span><br><span class="line">        picture=img_name,</span><br><span class="line">        save_name=save_name,</span><br><span class="line">        colorized=<span class="keyword">True</span>)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x751F;&#x6210;&#x7684;&#x56FE;&#x7247;&#xFF1A;<br><img src="http://p4wiqzx0i.bkt.clouddn.com/mywebsite.gif" alt=""></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -587,7 +605,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -773,7 +791,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">152k</span>
+    <span title="Symbols count total">289k</span>
   
 
   
@@ -782,7 +800,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:18</span>
+    <span title="Reading time total">4:22</span>
   
 </div>
 
@@ -1293,5 +1311,8 @@
 
   
 
-</body>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

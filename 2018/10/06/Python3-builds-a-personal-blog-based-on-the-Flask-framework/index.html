@@ -447,7 +447,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7</span>
+                <span title="Symbols count in article">690</span>
               
 
               
@@ -483,8 +483,26 @@
       
         <p><img src="http://p4wiqzx0i.bkt.clouddn.com/1520922144052.png" alt=""></p>
 <a id="more"></a>
-<p><a href="http://p4wiqzx0i.bkt.clouddn.com/blog.zip" target="_blank" rel="noopener">完整代码</a></p>
-
+<p><a href="http://p4wiqzx0i.bkt.clouddn.com/blog.zip" target="_blank" rel="noopener">&#x5B8C;&#x6574;&#x4EE3;&#x7801;</a></p>
+<script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -594,7 +612,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -780,7 +798,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">152k</span>
+    <span title="Symbols count total">289k</span>
   
 
   
@@ -789,7 +807,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:18</span>
+    <span title="Reading time total">4:22</span>
   
 </div>
 
@@ -1300,5 +1318,8 @@
 
   
 
-</body>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>

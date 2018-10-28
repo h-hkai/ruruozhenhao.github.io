@@ -440,7 +440,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.5k</span>
+                <span title="Symbols count in article">7.9k</span>
               
 
               
@@ -454,7 +454,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">6 mins.</span>
+                <span title="Reading time">7 mins.</span>
               
             </div>
           
@@ -475,9 +475,9 @@
 
       
         <p><img src="http://p4wiqzx0i.bkt.clouddn.com/ncn370.jpg" alt=""><br><a id="more"></a></p>
-<p>通过应用<a href="https://pillow-cn.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">pillow</a>库和<a href="https://blog.ixxoo.me/argparse.html" target="_blank" rel="noopener">Argparse</a>库来实现图片转字符画的功能。</p>
-<p>code:<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment">#命令行输入参数处理</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">'file'</span>)     <span class="comment">#输入文件</span></span><br><span class="line">parser.add_argument(<span class="string">'-o'</span>, <span class="string">'--output'</span>)   <span class="comment">#输出文件</span></span><br><span class="line">parser.add_argument(<span class="string">'--width'</span>, type = int, default = <span class="number">80</span>) <span class="comment">#输出字符画宽</span></span><br><span class="line">parser.add_argument(<span class="string">'--height'</span>, type = int, default = <span class="number">80</span>) <span class="comment">#输出字符画高</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#获取参数</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">IMG = args.file</span><br><span class="line">WIDTH = args.width</span><br><span class="line">HEIGHT = args.height</span><br><span class="line">OUTPUT = args.output</span><br><span class="line"></span><br><span class="line">ascii_char = list(<span class="string">"$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1&#123;&#125;[]?-_+~&lt;&gt;i!lI;:,\"^`'. "</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将256灰度映射到70个字符上</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_char</span><span class="params">(r,g,b,alpha = <span class="number">256</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> alpha == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">' '</span></span><br><span class="line">    length = len(ascii_char)</span><br><span class="line">    gray = int(<span class="number">0.2126</span> * r + <span class="number">0.7152</span> * g + <span class="number">0.0722</span> * b)</span><br><span class="line"></span><br><span class="line">    unit = (<span class="number">256.0</span> + <span class="number">1</span>)/length</span><br><span class="line">    <span class="keyword">return</span> ascii_char[int(gray/unit)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line"></span><br><span class="line">    im = Image.open(IMG)</span><br><span class="line">    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)</span><br><span class="line"></span><br><span class="line">    txt = <span class="string">""</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(HEIGHT):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(WIDTH):</span><br><span class="line">            txt += get_char(*im.getpixel((j,i)))</span><br><span class="line">        txt += <span class="string">'\n'</span></span><br><span class="line"></span><br><span class="line">    print(txt)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#字符画输出到文件</span></span><br><span class="line">    <span class="keyword">if</span> OUTPUT:</span><br><span class="line">        <span class="keyword">with</span> open(OUTPUT,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(txt)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">"output.txt"</span>,<span class="string">'w'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(txt)</span><br></pre></td></tr></table></figure></p>
-<p>处理过之后的“哆啦A梦”：</p>
+<p>&#x901A;&#x8FC7;&#x5E94;&#x7528;<a href="https://pillow-cn.readthedocs.io/zh_CN/latest/" target="_blank" rel="noopener">pillow</a>&#x5E93;&#x548C;<a href="https://blog.ixxoo.me/argparse.html" target="_blank" rel="noopener">Argparse</a>&#x5E93;&#x6765;&#x5B9E;&#x73B0;&#x56FE;&#x7247;&#x8F6C;&#x5B57;&#x7B26;&#x753B;&#x7684;&#x529F;&#x80FD;&#x3002;</p>
+<p>code:<br></p><figure class="highlight python"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> PIL <span class="keyword">import</span> Image</span><br><span class="line"><span class="keyword">import</span> argparse</span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x547D;&#x4EE4;&#x884C;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x5904;&#x7406;</span></span><br><span class="line">parser = argparse.ArgumentParser()</span><br><span class="line"></span><br><span class="line">parser.add_argument(<span class="string">&apos;file&apos;</span>)     <span class="comment">#&#x8F93;&#x5165;&#x6587;&#x4EF6;</span></span><br><span class="line">parser.add_argument(<span class="string">&apos;-o&apos;</span>, <span class="string">&apos;--output&apos;</span>)   <span class="comment">#&#x8F93;&#x51FA;&#x6587;&#x4EF6;</span></span><br><span class="line">parser.add_argument(<span class="string">&apos;--width&apos;</span>, type = int, default = <span class="number">80</span>) <span class="comment">#&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x753B;&#x5BBD;</span></span><br><span class="line">parser.add_argument(<span class="string">&apos;--height&apos;</span>, type = int, default = <span class="number">80</span>) <span class="comment">#&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x753B;&#x9AD8;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">#&#x83B7;&#x53D6;&#x53C2;&#x6570;</span></span><br><span class="line">args = parser.parse_args()</span><br><span class="line"></span><br><span class="line">IMG = args.file</span><br><span class="line">WIDTH = args.width</span><br><span class="line">HEIGHT = args.height</span><br><span class="line">OUTPUT = args.output</span><br><span class="line"></span><br><span class="line">ascii_char = list(<span class="string">&quot;$@B%8&amp;WM#*oahkbdpqwmZO0QLCJUYXzcvunxrjft/\|()1{}[]?-_+~&lt;&gt;i!lI;:,\&quot;^`&apos;. &quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># &#x5C06;256&#x7070;&#x5EA6;&#x6620;&#x5C04;&#x5230;70&#x4E2A;&#x5B57;&#x7B26;&#x4E0A;</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_char</span><span class="params">(r,g,b,alpha = <span class="number">256</span>)</span>:</span></span><br><span class="line">    <span class="keyword">if</span> alpha == <span class="number">0</span>:</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&apos; &apos;</span></span><br><span class="line">    length = len(ascii_char)</span><br><span class="line">    gray = int(<span class="number">0.2126</span> * r + <span class="number">0.7152</span> * g + <span class="number">0.0722</span> * b)</span><br><span class="line"></span><br><span class="line">    unit = (<span class="number">256.0</span> + <span class="number">1</span>)/length</span><br><span class="line">    <span class="keyword">return</span> ascii_char[int(gray/unit)]</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&apos;__main__&apos;</span>:</span><br><span class="line"></span><br><span class="line">    im = Image.open(IMG)</span><br><span class="line">    im = im.resize((WIDTH,HEIGHT), Image.NEAREST)</span><br><span class="line"></span><br><span class="line">    txt = <span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(HEIGHT):</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(WIDTH):</span><br><span class="line">            txt += get_char(*im.getpixel((j,i)))</span><br><span class="line">        txt += <span class="string">&apos;\n&apos;</span></span><br><span class="line"></span><br><span class="line">    print(txt)</span><br><span class="line"></span><br><span class="line">    <span class="comment">#&#x5B57;&#x7B26;&#x753B;&#x8F93;&#x51FA;&#x5230;&#x6587;&#x4EF6;</span></span><br><span class="line">    <span class="keyword">if</span> OUTPUT:</span><br><span class="line">        <span class="keyword">with</span> open(OUTPUT,<span class="string">&apos;w&apos;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(txt)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">&quot;output.txt&quot;</span>,<span class="string">&apos;w&apos;</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(txt)</span><br></pre></td></tr></tbody></table></figure><p></p>
+<p>&#x5904;&#x7406;&#x8FC7;&#x4E4B;&#x540E;&#x7684;&#x201C;&#x54C6;&#x5566;A&#x68A6;&#x201D;&#xFF1A;</p>
 <pre><code>                      $$$$                                     
                 $$d0x0o#uxx0z#$$                                 
              $WcxxxxW   &quot;kx}  &quot;hd$                               
@@ -554,7 +554,25 @@ $xxxxx(      $ffffffffffx@kkkkkkkkkkB    $
         $&quot;       n                                               
          $*I    p$                                               
             $$$                                                  
-</code></pre>
+</code></pre><script>
+        document.querySelectorAll('.github-emoji')
+          .forEach(el => {
+            if (!el.dataset.src) { return; }
+            const img = document.createElement('img');
+            img.style = 'display:none !important;';
+            img.src = el.dataset.src;
+            img.addEventListener('error', () => {
+              img.remove();
+              el.style.color = 'inherit';
+              el.style.backgroundImage = 'none';
+              el.style.background = 'none';
+            });
+            img.addEventListener('load', () => {
+              img.remove();
+            });
+            document.body.appendChild(img);
+          });
+      </script>
       
     </div>
 
@@ -662,7 +680,7 @@ $xxxxx(      $ffffffffffx@kkkkkkkkkkB    $
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">30</span>
+                    <span class="site-state-item-count">32</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -848,7 +866,7 @@ $xxxxx(      $ffffffffffx@kkkkkkkkkkB    $
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">152k</span>
+    <span title="Symbols count total">289k</span>
   
 
   
@@ -857,7 +875,7 @@ $xxxxx(      $ffffffffffx@kkkkkkkkkkB    $
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:18</span>
+    <span title="Reading time total">4:22</span>
   
 </div>
 
@@ -1368,5 +1386,8 @@ $xxxxx(      $ffffffffffx@kkkkkkkkkkB    $
 
   
 
-</body>
+  <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+<script src="/live2dw/lib/L2Dwidget.min.js?0c58a1486de42ac6cc1c59c7d98ae887"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
 </html>
