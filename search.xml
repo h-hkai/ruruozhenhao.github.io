@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[《The Mythical Man-Month》]]></title>
+    <url>%2F2018%2F12%2F24%2F%E3%80%8AThe-Mythical-Man-Month%E3%80%8B%2F</url>
+    <content type="text"><![CDATA[&#x8F6F;&#x4EF6;&#x5DE5;&#x7A0B;&#x4E2D;&#x4E00;&#x672C;&#x4E0D;&#x673D;&#x7684;&#x8457;&#x4F5C;&#x3002; document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
+      <categories>
+        <category>reading</category>
+      </categories>
+      <tags>
+        <tag>reading</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[《鸟哥的linux私房菜》]]></title>
     <url>%2F2018%2F12%2F19%2F%E3%80%8A%E9%B8%9F%E5%93%A5%E7%9A%84linux%E7%A7%81%E6%88%BF%E8%8F%9C%E3%80%8B%2F</url>
     <content type="text"><![CDATA[&#x5B66;&#x4E60;linux&#x7684;&#x5F88;&#x597D;&#x7684;&#x4E66;&#x7C4D;&#xFF0C;&#x867D;&#x7136;&#x6709;&#x5F88;&#x591A;&#x4E1C;&#x897F;&#x8FD8;&#x770B;&#x4E0D;&#x61C2;^_^. document.querySelectorAll('.github-emoji') .forEach(el => { if (!el.dataset.src) { return; } const img = document.createElement('img'); img.style = 'display:none !important;'; img.src = el.dataset.src; img.addEventListener('error', () => { img.remove(); el.style.color = 'inherit'; el.style.backgroundImage = 'none'; el.style.background = 'none'; }); img.addEventListener('load', () => { img.remove(); }); document.body.appendChild(img); });]]></content>
